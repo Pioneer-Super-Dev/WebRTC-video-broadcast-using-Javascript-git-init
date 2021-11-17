@@ -12,9 +12,9 @@ const video = document.querySelector("video");
 
 // Media contrains
 const constraints = {
-  video: { facingMode: "user" }
+  video: { facingMode: "user" },
   // Uncomment to enable audio
-  // audio: true,
+  //audio: true
 };
 
 navigator.mediaDevices

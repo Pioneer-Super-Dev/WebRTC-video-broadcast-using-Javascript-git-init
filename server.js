@@ -8,15 +8,16 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
 
-io.socket.on("error",  e => console.log(e));
+io.sockets.on("error",  e => console.log(e));
 server.listen(port, () => console.log(`Server is running on port ${port}`));
 
 let broadcaster
 
-io.socket.on("connection", socket => {
+io.sockets.on("connection", socket => {
     socket.on("broadcaster", () => {
         broadcaster = socket.id;
-        socket.broadcast.emit("broadcast");
+        socket.broadcast.emit("broadcaster");
+        console.log(`Broadcaster ${broadcaster} Connect`);
     });
 
     socket.on("watcher", () => {
